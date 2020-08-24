@@ -4,7 +4,7 @@
     "description": {
       //Add stuff!
     },
-    "item_states": { //Please change name. I was rushed. Change this if /bp/items/items.json/minecraft:item/item_states has been renamed
+    "item_variants": { //Works similarly to entity component groups
       //Add stuff
     },
     "components": {
