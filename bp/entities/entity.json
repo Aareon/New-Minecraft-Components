@@ -1,0 +1,14 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "component_groups": {
+      //Add stuff!
+    },
+    "components": {
+      //Add stuff!
+    },
+    "events": {
+      //Add stuff!
+    }
+  }
+}
