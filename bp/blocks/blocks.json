@@ -1,15 +1,100 @@
+//Note: NONE OF THIS IS CONFIRMED. This is just me making ideas for what we should have.
 {
   "format_version": "1.16.0",
   "minecraft:block": {
-    //Add stuff!
-  },
-  "block_states": {
-    //Add stuff!
-  },
-  "components": {
-    //Add stuff!
-  },
-  "events": {
-    //Add stuff!
+    "description": {
+      "tags": [
+        //Identifies the block tags it has that affects tools, as seen in tools' files in the beta leak
+      ]
+    },
+    "block_states": {
+      //Behaves similarly to entities' component groups
+    }
+    "components": {
+      "minecraft:grows_under_sun": { //Makes Dirt grow into Grass Blocks
+        "block": "minecraft:grass" //Identifier of block it grows into
+      },
+      "minecraft:dies_under_block": { //Makes Grass Blocks become Dirt when directly under a block
+        "block": "minecraft:dirt", //Identifier of block it dies into
+        "instant_death": true //Whether the block should instantly die, like Grass Paths
+      },
+      "minecraft:interact": {
+        //Behaves simarly to entities' minecraft:interact
+      },
+      "minecraft:no_collision": true, //Allows the block to be walked through, like Cobwebs
+      "minecraft:movement_speed": 0.5, //Multiplies entities' movement speed when in the block, like Cobwebs
+      "minecraft:gravity": true, //Makes the block fall, like Sand
+      "minecraft:sapling": { //Makes the block behave like a Sapling
+        "growth_multiplier": 0.5, //Multiplies the amount of time required to grow based on vanilla Saplings
+        "places_tree": "minecraft:oak_tree_feature" //The tree feature that is placed, based on identifiers
+      },
+      "minecraft:compostable": true, //Allows the block to be composted in a Composter
+      "minecraft:blockshape": "minecraft:stone_slab", //Makes the block behave like any other block in terms of collision and placement
+      "minecraft:bed": { //Makes the block act like a Bed and can be slept in
+        "marks_spawn": true //Whether or not the block sets the player's spawn point
+      },
+      "minecraft:summon_on_destroy": { //Allows the block to summon an entity on destroy
+        "count": 5 //Defines how many entities are spawned, can be either a value or a range
+        [
+          {
+            "weight": 5 //Adjusts the likeliness of this being chosen
+            "entity": "minecraft:pig" //Entity identifier
+          }
+        ]
+      }
+      "minecraft:pressure_plate": {}, //Makes the block run an event when stepped on; uses entity filters to accept only certain entities
+      "minecraft:unbreakable": true, //Prevents the block from being broken in Survival or Adventure Modes
+      "minecraft:directional": { //Allows the block to be directional
+        "all_sides": true //If true, is directional like Logs; if false, is directional like Furnaces
+      }
+      "minecraft:beacon_power": true, //Allows the block to power Beacons, like Blocks of Iron
+      "minecraft:constant_signal": 5, //Makes the block provide a constant signal of the power indicated, like Redstone Blocks
+      "minecraft:show_when_held": true, //Only shows the block if it is held in the player's hand, like Barriers
+      "minecraft:cake": 5, //Allows the block to be eaten like Cake; restores hunger equal to the value
+      "minecraft:portal": { //Sends the player to the specified dimension when in the block
+        "delay": 2.5, //The amount of time the player has to wait to be sent
+        "dimension": "minecraft:nether" //The dimension the player is sent to, can be minecraft:overworld, minecraft:nether, or minecraft:end
+      },
+      "minecraft:enchanting_power": 5, //Makes the block power up any Enchanting Table within the specified range
+      "minecraft:carries_signal": true, //Allows the block to carry Redstone signals, like Redstone Wire
+      "minecraft:detect_environment": {}, //Uses entity filters to run events under certain conditions
+      "minecraft:storage": { //Allows the block to have an inventory like Chests
+        "carry_on_destroy": true, //Whether the block should keep its inventory when dropped like Shulker Boxes; if false, the inventory is dropped as items; mutually exclusive with cloud_storage
+        "cloud_storage": true, //Allows the block's inventory to be accessed like Ender Chests; mutually exclusive with carry_on_destroy
+        "size": 5 //The size of the block's inventory
+      },
+      "minecraft:button": { //Allows the block to be activated by projectiles or players
+        "projectile_activated": true, //Whether projectiles can press the button
+        "player_activated": true, //Whether players can press the button
+        "event": "minecraft:emit_redstone" //The event to fire on press
+      },
+      "minecraft:sign": "#FFFFFF", //Allows the block to be written on, with a specified default color
+      "minecraft:suffocate": true, //Whether or not the block suffocates entities within it, like Leaves
+      "minecraft:melt_in_light": true, //Whether or not the block melts near light, like Snow
+      "minecraft:damage": 5, //How much damage the block deals to entities touching it, like Cacti
+      "minecraft:on_block": true, //Whether or not the block has to be on another block; if not on a block, it is destroyed
+      "minecraft:placeable": [], //The blocks that this block must be placed on
+      "minecraft:vertical_growth": { //Makes the block grow like Sugar Cane, and can be grown using items like Bone Meal
+        "maximum": 5, //The natural maximum height the block can grow to
+        "growth_rate": 2.5 //The growth speed multiplier
+      },
+      "minecraft:emits_particle": "minecraft:totem", //The particle the block emits, like Sand and Mycelium
+      "minecraft:water_weakness": true, //Whether or not the block is destroyed by Water
+      "minecraft:door": { //Makes the block open and closable like Doors and Fence Gates
+        "player_openable": true, //Whether players can open the door
+        "mob_openable": true, //Whether mobs like Villagers can open the door
+        "redstone_openable": true, //Whether Redstone can open the door
+        "breakable": true //Whether mobs like Zombies can break the door
+      },
+      "minecraft:climbable": true, //Whether the block is climbable like Ladders
+      "minecraft:farmland": true, //Whether the block allows crops to grow on it
+      "minecraft:root_plant": { //Makes the block a root plant like Wheat and Potatoes
+        "stages": 5, //How many stages the block has
+        "growth_rate": 2.5 //The growth speed multiplier
+      }
+    },
+    "events": { //Works simarly to entities' events, but instead of using components groups, block states are used
+      "minecraft:emit_redstone": {} //Makes the block emit a Redstone signal when the event is run
+    }
   }
 }
