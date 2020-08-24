@@ -1,0 +1,23 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:recipe_shaped": {
+    "description": {
+      //Add stuff!
+    },
+    "tags": [ "example", "example2" ],
+    "group": "example_group",
+    "pattern": [
+      "##",
+      "##",
+      "##"
+    ],
+    "key": {
+      "#": {
+        //Add stuff!
+      }
+    },
+    "result": {
+      //Add stuff!
+    }
+  }
+}
