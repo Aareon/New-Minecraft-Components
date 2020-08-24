@@ -1,0 +1,17 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:item": {
+    "description": {
+      //Add stuff!
+    },
+    "item_states": { //Please rename. I was rushed.
+      //Add stuff!
+    },
+    "components": {
+      //Add stuff!
+    },
+    "events": {
+      //Add stuff!
+    }
+  }
+}
