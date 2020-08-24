@@ -8,5 +8,5 @@ Folders? Just make a new file with the name of the folder a / and then the name 
 
 ### Creators and Editors
 * Gekocaretaker
-* Chikorita-Lover
+* Chikorita-Lover <br />
 You can join!
