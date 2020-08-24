@@ -1,0 +1,18 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      //Add stuff!
+    },
+    "tags": [ "example", "example2" ],
+    "group": "example_group",
+    "ingredients": [
+      {
+        //Add stuff!
+      }
+    ],
+    "result": {
+      //Add stuff!
+    }
+  }
+}
