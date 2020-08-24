@@ -4,7 +4,7 @@
     "description": {
       //Add stuff!
     },
-    "item_states": { //Please rename. I was rushed.
+    "item_variants": { //Behaves similarly to entity component groups.
       //Add stuff!
     },
     "components": {
