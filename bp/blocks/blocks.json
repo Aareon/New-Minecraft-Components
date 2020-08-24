@@ -1,0 +1,15 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:block": {
+    //Add stuff!
+  },
+  "block_states": {
+    //Add stuff!
+  },
+  "components": {
+    //Add stuff!
+  },
+  "events": {
+    //Add stuff!
+  }
+}
