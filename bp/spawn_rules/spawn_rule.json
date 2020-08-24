@@ -1,0 +1,13 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      //Add stuff!
+    },
+    "conditions": [
+      {
+        //Add stuff!
+      }
+    ]
+  }
+}
