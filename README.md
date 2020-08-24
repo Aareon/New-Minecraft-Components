@@ -1,5 +1,6 @@
 # New-Minecraft-Components
-A repository full of things needed in the API of minecraft.
+A repository full of things needed in the API of minecraft. <br />
+**Warning! These are just examples that are not in the game and might not come! Do NOT try to use these in your addon**
 
 ## Want to add something or something is missing?
 Just add new features to the file you want! <br />
