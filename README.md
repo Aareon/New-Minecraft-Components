@@ -1,6 +1,7 @@
 # New-Minecraft-Components
 A repository full of things needed in the API of minecraft. <br />
 These features might just be shared with Mojang!<br />
+Please don't delete things that others have made. If you know who made that component, then ask them first.<br />
 **Warning! These are just examples that are not in the game and might not come! Do NOT try to use these in your addon**
 
 ## Want to add something or something is missing?
