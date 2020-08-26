@@ -129,12 +129,29 @@
               "set_this_block": "minecraft:stone" //What to set this block to
             }
           }
+        ],
+      "minecraft:sets_on_fire": true, //Whether or not the block sets anything touching or in the block on fire
+      "minecraft:leaf_decay": true, //If true, this block will destroy itself automatically when generated as part of a tree feature and is not attached to the trunk
+      "minecraft:sponge": 5, //Makes the block absorb any water within a cuboid area with dimensions equal to the value
+      "minecraft:can_be_waterlogged": true, //Whether or not the block can be waterlogged
+      "minecraft:spawner": { //Makes the block spawn entities
+        "affected_by_light": true, //If true, the block has a lower chance to spawn entities the more light there is
+        "spawn_multiplier": 2.5, //How often an entity should be spawned, compared to the Monster Spawner
+        "count": 5, //How many entities are spawned each time; can also be a range
+        "entity_types: [
+          {
+            "weight": 5, //The chance this entity spawns over others
+            "identifier": "minecraft:pig" //The entity to spawn
+          }
         ]
-      }
+      },
+      "minecraft:fragile": true, //Whether or not a block can be placed over this block without manually breaking it, like Ferns and Tall Grass
+      "minecraft:fall_damage_multiplier": 2.5, //The multiplier for how much fall damage is taken, similar to reduced fall damage on Beds and Haybales
+      "minecraft:particle": "minecraft:totem" //Defines a particle the block emits overtime, similar to Mycelium
     },
     "events": { //Works simarly to entities' events, but instead of using components groups, block states are used; there are some events with hardcoded properties
       "minecraft:example_event": {
-        "set_block": "minecraft:stone" //What to set this block to
+        "set_block": "minecraft:stone" //What to set this block to when the event is fired
       },
       "minecraft:emit_redstone": {}, //Makes the block emit a Redstone signal when the event is run
       "minecraft:explode": {}, //Makes the block explode instantly
