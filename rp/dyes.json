@@ -2,14 +2,26 @@
   "format_version": "1.16.0",
   "minecraft:dye": { //Define that the file is for dyes
     "rose": { //Define the dye's index in the file. Used for developers to know what is what.
-      "dye_id": "16", //Define the dye's id. A script will change the id if 2 ids are the same. Ids will be defined below the name as for easier use.
-      "color": "#ff007f", //Define the color used for the dye. Would be used for banners, sheep colors, carpet, signs, and leather armor colors. Should support colorhexa.com ids
+      "dye_id": "16", //Define the dye's id. A script will change the id if 2 ids are the same. Will also change it in other files if used. Ids will be defined below the name as for easier use.
+      "color": "#ff007f", //Define the color used for the dye. Would be used for banners, sheep colors, signs, cauldron water, and leather armor colors. Should support colorhexa.com ids
       "textures": { //Define all the textures for the dye. Might be missing some.
         "dye": "textures/items/dyes/rose", //Dye texture
         "bed": "textures/entity/bed/rose", //Bed texture
+        "bed_item": "textures/items/bed_rose", //Bed item texture
         "terracotta": "textures/blocks/rose_terracotta", //Terracotta texture
         "glazed_terracotta": "textures/blocks/rose_glazed_terracotta", //Glazed Terracotta texture. Makes great patterns
-        "wool": "textures/blocks/rose_wool" //Wool and Carpet texture
+        "wool": "textures/blocks/rose_wool", //Wool and Carpet texture
+        "shulker": { //Adds data for the shulker entity and box
+          "entity": "textures/entity/shulker/shulker_rose", //Shulker entity texture path
+          "block": "textures/blocks/shulker_top_rose" //Shulker box texture. Don't know why there isn't a side texture
+        },
+        "hardened_clay": "textures/blocks/hardened_clay_stained_rose", //Hardened clay texture
+        "glass": { //Defines all the glass textures
+          "glass_pane": "textures/blocks/glass_pane_top_rose", //The glass pane texture. It is different from the glass texture
+          "glass": "textures/blocks/glass_rose" //The glass texture. Used for the sides of glass panes as well
+        },
+        "concrete": "textures/blocks/concrete_rose", //The concrete texture
+        "concrete_powder": "textures/blocks/concrete_powder_rose" //Concrete powder texture
       }
     }
   }
