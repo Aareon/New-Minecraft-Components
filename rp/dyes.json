@@ -1,12 +1,15 @@
 {
   "format_version": "1.16.0",
   "minecraft:dye": { //Define that the file is for dyes
-    "rose": { //Define the dye's index in the file. Used for developers to know what is what
-      "dye_id": "rose", //Define the dye's id. Will have to use letters instead of numbers so people can easily give themselves the dye
-      "color": "#ff007f", //Define the color used for the dye. Would be used for banners, sheep colors, wool, carpet, signs, and leather armor colors.
+    "rose": { //Define the dye's index in the file. Used for developers to know what is what.
+      "dye_id": "16", //Define the dye's id. A script will change the id if 2 ids are the same. Ids will be defined below the name as for easier use.
+      "color": "#ff007f", //Define the color used for the dye. Would be used for banners, sheep colors, carpet, signs, and leather armor colors. Should support colorhexa.com ids
       "textures": { //Define all the textures for the dye. Might be missing some.
-        "dye": "textures/items/dyes/rose",
-        "bed": "textures/entity/bed/rose"
+        "dye": "textures/items/dyes/rose", //Dye texture
+        "bed": "textures/entity/bed/rose", //Bed texture
+        "terracotta": "textures/blocks/rose_terracotta", //Terracotta texture
+        "glazed_terracotta": "textures/blocks/rose_glazed_terracotta", //Glazed Terracotta texture. Makes great patterns
+        "wool": "textures/blocks/rose_wool" //Wool and Carpet texture
       }
     }
   }
