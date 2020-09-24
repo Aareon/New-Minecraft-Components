@@ -2,13 +2,7 @@
   "format_version": "1.16.0",
   "minecraft:block": {
     "description": {
-      "tags": [
-        //Identifies the block tags it has that affects tools, as seen in tools' files in the beta leak
-      ]
     },
-    "block_states": {
-      //Behaves similarly to entities' component groups
-    }
     "components": {
       "minecraft:grows_under_sun": { //Makes Dirt grow into Grass Blocks
         "block": "minecraft:grass" //Identifier of block it grows into
@@ -17,10 +11,6 @@
         "block": "minecraft:dirt", //Identifier of block it dies into
         "instant_death": true //Whether the block should instantly die, like Grass Paths
       },
-      "minecraft:interact": {
-        //Behaves simarly to entities' minecraft:interact
-      },
-      "minecraft:no_collision": true, //Allows the block to be walked through, like Cobwebs
       "minecraft:movement_speed": 0.5, //Multiplies entities' movement speed when in the block, like Cobwebs
       "minecraft:gravity": true, //Makes the block fall, like Sand
       "minecraft:sapling": { //Makes the block behave like a Sapling
@@ -28,7 +18,6 @@
         "places_tree": "minecraft:oak_tree_feature" //The tree feature that is placed, based on identifiers
       },
       "minecraft:compostable": true, //Allows the block to be composted in a Composter
-      "minecraft:blockshape": "minecraft:stone_slab", //Makes the block behave like any other block in terms of collision and placement
       "minecraft:bed": { //Makes the block act like a Bed and can be slept in
         "marks_spawn": true //Whether or not the block sets the player's spawn point
       },
@@ -40,9 +29,7 @@
             "entity": "minecraft:pig" //Entity identifier
           }
         ]
-      }
-      "minecraft:pressure_plate": {}, //Makes the block run an event when stepped on; uses entity filters to accept only certain entities
-      "minecraft:unbreakable": true, //Prevents the block from being broken in Survival or Adventure Modes
+      },
       "minecraft:directional": { //Allows the block to be directional
         "all_sides": true //If true, is directional like Logs; if false, is directional like Furnaces
       }
@@ -56,7 +43,6 @@
       },
       "minecraft:enchanting_power": 5, //Makes the block power up any Enchanting Table within the specified range
       "minecraft:carries_signal": true, //Allows the block to carry Redstone signals, like Redstone Wire
-      "minecraft:detect_environment": {}, //Uses entity filters to run events under certain conditions
       "minecraft:storage": { //Allows the block to have an inventory like Chests
         "carry_on_destroy": true, //Whether the block should keep its inventory when dropped like Shulker Boxes; if false, the inventory is dropped as items; mutually exclusive with cloud_storage
         "cloud_storage": true, //Allows the block's inventory to be accessed like Ender Chests; mutually exclusive with carry_on_destroy
@@ -73,12 +59,6 @@
       "minecraft:suffocate": true, //Whether or not the block suffocates entities within it, like Leaves
       "minecraft:melt_in_light": true, //Whether or not the block melts near light, like Snow
       "minecraft:damage": 5, //How much damage the block deals to entities touching it, like Cacti
-      "minecraft:on_block": true, //Whether or not the block has to be on another block; if not on a block, it is destroyed
-      "minecraft:placeable": [], //The blocks that this block must be placed on
-      "minecraft:vertical_growth": { //Makes the block grow like Sugar Cane, and can be grown using items like Bone Meal
-        "maximum": 5, //The natural maximum height the block can grow to
-        "growth_rate": 2.5 //The growth speed multiplier
-      },
       "minecraft:emits_particle": "minecraft:totem", //The particle the block emits, like Sand and Mycelium
       "minecraft:water_weakness": true, //Whether or not the block is destroyed by Water
       "minecraft:door": { //Makes the block open and closable like Doors and Fence Gates
@@ -93,13 +73,7 @@
         "stages": 5, //How many stages the block has
         "growth_rate": 2.5 //The growth speed multiplier
       },
-      "minecraft:transparent": true, //Allows the block's textures to have transparency and transclucency
       "minecraft:sink_entities": true, //Gives the block a Soul Sand effect on entities
-      "minecraft:collision": { //Changes the block's collision
-        "length": 5, //The length of the block's collision, like the Bed
-        "width": 5, //The width of the block's collision
-        "height": 5 //The height of the block's collision, like the Door
-      },
       "minecraft:rail": { //Allows entities with minecraft:rail_movement to move on this block, like vanilla Rails
         "speed_multiplier": 2.5, //The speed multiplier of rail entities moving on this block
         "powered": true, //Whether or not the rail has properties similar to Powered Rails
@@ -129,10 +103,15 @@
               "set_this_block": "minecraft:stone" //What to set this block to
             }
           }
-        ],
+        ]
+      },
       "minecraft:sets_on_fire": true, //Whether or not the block sets anything touching or in the block on fire
       "minecraft:leaf_decay": true, //If true, this block will destroy itself automatically when generated as part of a tree feature and is not attached to the trunk
-      "minecraft:sponge": 5, //Makes the block absorb any water within a cuboid area with dimensions equal to the value
+      "minecraft:sponge": { //Makes the block absorb any water within a cuboid area
+        "size": 5,
+        "limit": 5, //Amount of water that can be absorped, leave empty for infinite
+        "event": "minecraft:example_event" //Event to run when maximum is reached
+      },
       "minecraft:can_be_waterlogged": true, //Whether or not the block can be waterlogged
       "minecraft:spawner": { //Makes the block spawn entities
         "affected_by_light": true, //If true, the block has a lower chance to spawn entities the more light there is
@@ -147,15 +126,12 @@
       },
       "minecraft:fragile": true, //Whether or not a block can be placed over this block without manually breaking it, like Ferns and Tall Grass
       "minecraft:fall_damage_multiplier": 2.5, //The multiplier for how much fall damage is taken, similar to reduced fall damage on Beds and Haybales
-      "minecraft:particle": "minecraft:totem" //Defines a particle the block emits overtime, similar to Mycelium
     },
     "events": { //Works simarly to entities' events, but instead of using components groups, block states are used; there are some events with hardcoded properties
       "minecraft:example_event": {
-        "set_block": "minecraft:stone" //What to set this block to when the event is fired
-      },
-      "minecraft:emit_redstone": {}, //Makes the block emit a Redstone signal when the event is run
-      "minecraft:explode": {}, //Makes the block explode instantly
-      "minecraft:delayed_explode": {} //Makes the block have a delayed explosion like TNT
+        "emit_redstone": 5, //Emits Redstone signal with the value as strength
+        "explode": 5, //Explodes with delay in seconds
+      }
     }
   }
 }
