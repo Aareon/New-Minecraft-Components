@@ -17,7 +17,7 @@
         "growth_multiplier": 0.5, //Multiplies the amount of time required to grow based on vanilla Saplings
         "places_tree": "minecraft:oak_tree_feature" //The tree feature that is placed, based on identifiers
       },
-      "minecraft:compostable": true, //Allows the block to be composted in a Composter
+      "minecraft:compostable": 0.5, //Allows the block to be composted in a Composter with the given value as the chance
       "minecraft:bed": { //Makes the block act like a Bed and can be slept in
         "marks_spawn": true //Whether or not the block sets the player's spawn point
       },
@@ -41,31 +41,44 @@
         "delay": 2.5, //The amount of time the player has to wait to be sent
         "dimension": "minecraft:nether" //The dimension the player is sent to, can be minecraft:overworld, minecraft:nether, or minecraft:end
       },
-      "minecraft:enchanting_power": 5, //Makes the block power up any Enchanting Table within the specified range
+      "minecraft:enchanting_power": 5, //Makes the block power up any Enchanting Table within the specified range, like Bookshelves
       "minecraft:carries_signal": true, //Allows the block to carry Redstone signals, like Redstone Wire
       "minecraft:storage": { //Allows the block to have an inventory like Chests
         "carry_on_destroy": true, //Whether the block should keep its inventory when dropped like Shulker Boxes; if false, the inventory is dropped as items; mutually exclusive with cloud_storage
         "cloud_storage": true, //Allows the block's inventory to be accessed like Ender Chests; mutually exclusive with carry_on_destroy
         "size": 5, //The size of the block's inventory
         "has_double_variant": true, //Allows the block to have a double variant that is wider with double inventory, similar to Double Chests
-        "trapped_event": "minecraft:emit_redstone" //Event to fire when the chest is opened, like Trapped Chests
+        "trapped_event": "minecraft:example_event" //Event to fire when the chest is opened, like Trapped Chests
       },
       "minecraft:button": { //Allows the block to be activated by projectiles or players
         "projectile_activated": true, //Whether projectiles can press the button
         "player_activated": true, //Whether players can press the button
-        "event": "minecraft:emit_redstone" //The event to fire on press
+        "event": "minecraft:example_event" //The event to fire on press
       },
       "minecraft:sign": "#FFFFFF", //Allows the block to be written on, with a specified default color
       "minecraft:suffocate": true, //Whether or not the block suffocates entities within it, like Leaves
-      "minecraft:melt_in_light": true, //Whether or not the block melts near light, like Snow
-      "minecraft:damage": 5, //How much damage the block deals to entities touching it, like Cacti
+      "minecraft:melt_in_light": "minecraft:water", //Makes the block melt near light into the specified block, like Snow
+      "minecraft:damage": { //Deals damage to entities touching it, like Cacti
+        "damage": 5,
+        "destroys_items": true,
+        "filters": [] //Entity selection filters, can be used to, for example, omit players sneaking, like Magma Blocks
+      },
       "minecraft:emits_particle": "minecraft:totem", //The particle the block emits, like Sand and Mycelium
-      "minecraft:water_weakness": true, //Whether or not the block is destroyed by Water
-      "minecraft:door": { //Makes the block open and closable like Doors and Fence Gates
+      "minecraft:liquid_weakness": { //Makes the block destroyable by liquids
+        "all_liquids": true,
+        "limited_liquids": [
+          {
+            "liquid": "minecraft:water", //The liquid identifier
+            "weak_to_liquid": true //Whether or not the liquid destroys this block
+          }
+        ]
+      },
+      "minecraft:door": { //Makes the block open and closable like Doors and Fence Gates via event
         "player_openable": true, //Whether players can open the door
         "mob_openable": true, //Whether mobs like Villagers can open the door
         "redstone_openable": true, //Whether Redstone can open the door
-        "breakable": true //Whether mobs like Zombies can break the door
+        "breakable": true, //Whether mobs like Zombies can break the door
+        "event": "minecraft:example_event" //Event to run when door is opened; must be used to trigger event that opens the block
       },
       "minecraft:climbable": true, //Whether the block is climbable like Ladders
       "minecraft:farmland": true, //Whether the block allows crops to grow on it
@@ -74,16 +87,21 @@
         "growth_rate": 2.5 //The growth speed multiplier
       },
       "minecraft:sink_entities": true, //Gives the block a Soul Sand effect on entities
-      "minecraft:rail": { //Allows entities with minecraft:rail_movement to move on this block, like vanilla Rails
+      "minecraft:rail": { //Allows the block to behave like vanilla rails
         "speed_multiplier": 2.5, //The speed multiplier of rail entities moving on this block
         "powered": true, //Whether or not the rail has properties similar to Powered Rails
         "detector": "minecraft:emit_redstone", //When a rail entity is over this block, the specified event fires
-        "activator": true //Whether or not the rail has properties similar to Activator Rails
+        "activator": true, //Whether or not the rail has properties similar to Activator Rails
+        "corners": true, //Whether or not the rail can turn, like normal Rails
+        "textures": { //Defines textures using shortnames from terrain_texture.json or flipbook_texture.json
+          "straight": "example_rail_straight",
+          "corner": "example_rail_corner"
+        }
       },
       "minecraft:liquid": { //Makes this block a liquid
-        "overworld_range": 5 //The farthest the block can flow in the Overworld
-        "nether_range": 5 //The farthest the block can flow in the Nether
-        "end_range": 5 //The farthest the block can flow in the End
+        "overworld_range": 5, //The farthest the block can flow in the Overworld
+        "nether_range": 5, //The farthest the block can flow in the Nether
+        "end_range": 5, //The farthest the block can flow in the End
         "interactions": [ //Interactions with other blocks
           {
             "block": "minecraft:water", //The other block required for this interaction
@@ -110,7 +128,7 @@
       "minecraft:sponge": { //Makes the block absorb any water within a cuboid area
         "size": 5,
         "limit": 5, //Amount of water that can be absorped, leave empty for infinite
-        "event": "minecraft:example_event" //Event to run when maximum is reached
+        "event": "minecraft:example_event" //Event to run when maximum is reached; can be used to transform into a "full" sponge block, for example
       },
       "minecraft:can_be_waterlogged": true, //Whether or not the block can be waterlogged
       "minecraft:spawner": { //Makes the block spawn entities
@@ -126,6 +144,8 @@
       },
       "minecraft:fragile": true, //Whether or not a block can be placed over this block without manually breaking it, like Ferns and Tall Grass
       "minecraft:fall_damage_multiplier": 2.5, //The multiplier for how much fall damage is taken, similar to reduced fall damage on Beds and Haybales
+      "minecraft:pottable": "geometry.example" //Allows the block to be potted, adding the geometry provided to the pot's
+      
     },
     "events": { //Works simarly to entities' events, but instead of using components groups, block states are used; there are some events with hardcoded properties
       "minecraft:example_event": {
