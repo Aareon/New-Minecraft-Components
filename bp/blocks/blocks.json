@@ -135,7 +135,7 @@
         "affected_by_light": true, //If true, the block has a lower chance to spawn entities the more light there is
         "spawn_multiplier": 2.5, //How often an entity should be spawned, compared to the Monster Spawner
         "count": 5, //How many entities are spawned each time; can also be a range
-        "entity_types: [
+        "entity_types": [
           {
             "weight": 5, //The chance this entity spawns over others
             "identifier": "minecraft:pig" //The entity to spawn
